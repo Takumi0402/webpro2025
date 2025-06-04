@@ -1,31 +1,173 @@
+/* 基本的なリセット */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 例としてフォントを設定 */
+    background-color: #f0f0f0; /* 全体の背景色 */
     color: #333;
+}
+
+/* サイト全体を囲むコンテナ */
+.container {
+    display: flex; /* Flexboxを有効にする */
+    min-height: 100vh; /* ビューポートいっぱいの高さを確保 */
+}
+
+/* 左サイドバーのスタイル */
+.sidebar {
+    width: 250px; /* サイドバーの固定幅 */
+    background-color: #ffffff; /* サイドバーの背景色 */
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* 右側に影 */
+    flex-shrink: 0; /* サイドバーの幅が縮まないようにする */
     text-align: center;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em 0;
+.profile-logo {
+    margin-bottom: 40px;
 }
 
-h1 {
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%; /* 円形にする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 auto; /* 中央揃え */
+}
+
+.main-nav ul {
+    list-style: none; /* リストの黒丸を削除 */
+    padding: 0;
     margin: 0;
 }
 
-main {
-    padding: 20px;
+.main-nav li a {
+    display: block; /* リンクをブロック要素にしてクリック領域を広げる */
+    padding: 10px 20px;
+    color: #555;
+    text-decoration: none; /* 下線を削除 */
+    transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+    text-align: left; /* 左揃え */
 }
 
+.main-nav li a:hover,
+.main-nav li a.active { /* アクティブなメニューとホバー時のスタイル */
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+/* 右メインコンテンツのスタイル */
+.content {
+    flex-grow: 1; /* 残りのスペースをすべて占有する */
+    padding: 40px;
+    background-color: #f0f0f0; /* メインコンテンツの背景色 */
+}
+
+.content-header {
+    margin-bottom: 30px;
+}
+
+.content-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+.content-header .subtitle {
+    color: #777;
+    font-size: 1.1em;
+}
+
+.profile-photo {
+    width: 200px; /* プロフィール写真の幅 */
+    height: 200px; /* プロフィール写真の高さ */
+    border-radius: 50%; /* 円形にする */
+    object-fit: cover; /* 画像がはみ出さないように */
+    margin-bottom: 30px;
+    display: block; /* 中央揃えのために必要 */
+    margin-left: auto; /* 中央揃え */
+    margin-right: auto; /* 中央揃え */
+}
+
+.details-section {
+    display: flex; /* 詳細セクションもFlexboxで横並びに */
+    gap: 40px; /* ブロック間の隙間 */
+    flex-wrap: wrap; /* 画面幅が狭いときに折り返す */
+}
+
+.detail-block {
+    flex: 1; /* 各ブロックが均等な幅になるように */
+    min-width: 300px; /* 最小幅を設定して、小さくなりすぎないように */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.detail-block h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.detail-block p {
+    line-height: 1.8; /* 行間を調整 */
+    margin-bottom: 10px;
+}
+
+/* フッターのスタイル */
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.footer-nav a {
+    color: #777;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+/* レスポンシブ対応の基本的なメディアクエリ */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* 画面幅が狭いときに縦並びにする */
+    }
+
+    .sidebar {
+        width: 100%; /* サイドバーを横幅いっぱいに */
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 下側に影 */
+    }
+
+    .main-nav ul {
+        display: flex; /* メニュー項目を横並びに */
+        justify-content: center; /* 中央揃え */
+        flex-wrap: wrap; /* 画面幅が狭いときに折り返す */
+    }
+
+    .main-nav li a {
+        padding: 8px 15px;
+        text-align: center;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .details-section {
+        flex-direction: column; /* 詳細ブロックを縦並びに */
+        gap: 20px;
+    }
 }
